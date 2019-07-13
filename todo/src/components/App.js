@@ -1,17 +1,67 @@
-import React, { Component } from "react";
-import { connect } from 'react-redux';
-import { action } from '../actions';
+import React, { Component } from "react"
+import { connect } from 'react-redux'
+import { action } from '../actions'
+import { Todo, TodoList, TodoForm } from './Todo'
 
 class App extends Component {    
 
-    // Add functions if needed
+  // Functions
+
+    addTodo = newtask => {
+      console.log('Add To Do.');
+      // const newToDo = {
+      //   task: newtask, 
+      //   id: Date.now(), 
+      //   completed: false
+      // }
+
+      // this.setState({
+      //   todoOnState: [...this.state.todoOnState, newToDo] });
+    }
+
+    toggleTodo = id => {
+      console.log('Toggle To Do.');
+      // const newToDoList = this.state.todoOnState.map(task => {
+      //   if (task.id === id) {
+      //     const newTask = {
+      //       ...task,
+      //       completed: !task.completed
+      //     };
+      //     return newTask;
+      //   } else {
+      //     return task;
+      //   }});
+
+      //   this.setState({ todoOnState: newToDoList });
+    }
+
+    clearTodo = () => {
+      console.log('Clicked Clear.');
+      // const newToDoList = this.state.todoOnState.filter(task => task.completed === false);
+      // this.setState({ todoOnState: newToDoList });
+    }
+
+    resetTodo = () => {
+      console.log('Clicked Reset.');
+      // this.setState({ todoOnState: toDoList });
+    }
 
     render() {
-        // use this.props.stateItem
-        return (
-            <div className='main'>
-                Display State Item: {this.props.stateItem} 
-            </div>
+      // use this.props.stateItem
+      return (
+        <div className="main">
+          <h2>Honey Do List!</h2>
+          <div className="todolist">
+          <TodoList />
+          <TodoForm />
+          
+          <br />
+          
+          <button onClick={this.clearTodo}>Clear Completed</button>
+          <button onClick={this.resetTodo}>Reset</button>
+    
+          </div>
+        </div>
         );
     }
 }
