@@ -1,22 +1,37 @@
-import React from 'react';
-import Todo from './Todo';
+import React from "react";
+import { connect } from 'react-redux'
+// import Todo from "./Todo";
 
-// <TodoList /> receives Todos array and iterates over the list generating a new <Todo /> for each element in the array.
-    
+// <TodoList /> receives Todos array and
+// iterates over the list generating a new <Todo />
+// for each element in the array.
+
+// initialState: toDoList[]
+
 function TodoList(props) {
-    return (
-        <div>
-            <ul>
-                <li>To Do List</li>
-                {/* {props.todolist.map(toDo => {
-                    return (
-                    <Todo toDo={toDo} key={toDo.id}
-                        toggleTodo={props.toggleTodo}
-                    />
-                );})} */}
-            </ul>
-        </div>
-    );
+  // get variables from state
+  const toDoList = props.toDoList;
+  console.log(props.toDoList);
+
+  return (
+    <div>
+      <ul>
+        {props.toDoList.map(toDo => {
+          return (
+            <li>{toDo.task}</li>
+          );
+        })}
+      </ul>
+    </div>
+  );
 }
 
-export default TodoList;
+const mapStateToProps = (state) => {
+  return {
+    toDoList: state.toDoList
+  };
+};
+
+export default connect(mapStateToProps)(TodoList);
+
+// <Todo toDo={toDo} key={toDo.id} toggleTodo={props.toggleTodo} />

@@ -2,6 +2,8 @@ import { ACTION } from '../actions';
 
 const initialState = {
   // Setting up the initial To Do List (used data from previous to do list)
+  task: '',
+  completed: false,
   toDoList: [
     {
         task: 'Organize Garage', 
