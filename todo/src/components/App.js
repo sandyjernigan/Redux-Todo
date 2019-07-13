@@ -1,16 +1,34 @@
-import React from 'react';
-import ThisComponent from './ThisComponent'
+import React, { Component } from "react";
+import { connect } from 'react-redux';
+import { action } from '../actions';
 
-// This is the base react app to display components
+class App extends Component {    
 
-class App extends React.Component {
-	render() {
-		return (
-			<div className="app">
-				<ThisComponent />
-			</div>
-		)
-	}
+    // Add functions if needed
+
+    render() {
+        // use this.props.stateItem
+        return (
+            <div className='main'>
+                Display State Item: {this.props.stateItem} 
+            </div>
+        );
+    }
 }
 
-export default App
+// The mapStateToProps function specifies which portion of the
+// state tree this component needs to receive. 
+
+const mapStateToProps = (state) => {
+    return {
+        stateItem: state.stateItem
+    };
+};
+
+// The mapDispatchToProps is used to dispatch the actions
+const mapDispatchToProps = { 
+    action: action
+}
+
+// The connect function makes this component aware of the rest of the redux architecture. 
+export default connect(mapStateToProps, mapDispatchToProps)(App);
