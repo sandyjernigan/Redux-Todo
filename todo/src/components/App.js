@@ -2,6 +2,8 @@ import React, { Component } from "react"
 import { connect } from 'react-redux'
 import { action } from '../actions'
 import { Todo, TodoList, TodoForm } from './Todo'
+import Background from './backgroundStyle/bg';
+import './Todo/Todo.css';
 
 class App extends Component {    
 
@@ -49,17 +51,20 @@ class App extends Component {
     render() {
       // use this.props.stateItem
       return (
-        <div className="main">
-          <h2>Honey Do List!</h2>
-          <div className="todolist">
-          <TodoList />
-          <TodoForm />
-          
-          <br />
-          
-          <button onClick={this.clearTodo}>Clear Completed</button>
-          <button onClick={this.resetTodo}>Reset</button>
-    
+        <div>
+        <Background />
+          <div className="main">
+            <h2>Honey Do List!</h2>
+            <div className="todolist">
+            <TodoList />
+            <TodoForm />
+            
+            <br />
+            
+            <button onClick={this.clearTodo}>Clear Completed</button>
+            <button onClick={this.resetTodo}>Reset</button>
+      
+            </div>
           </div>
         </div>
         );
