@@ -5,7 +5,7 @@ const initialState = {
 		{
 			id: 1,
 			value: 'Walk the dog.',
-			completed: false
+			completed: true
 		},
 		{
 			id: 2,
@@ -21,14 +21,11 @@ export default (state = initialState, action) => {
 		case TOGGLETODO:
 			// Toggle the completed status
 			console.log('Reducer: Toggle To Do.' + action.payload.id);
+
+			// map over current state and mark task completed if = id passed in
 			const toggleToDoList = state.todos.map(
 				(todo) => (todo.id === action.payload.id ? { ...todo, completed: !todo.completed } : todo)
 			);
-
-			// map over current state and mark task completed if = id passed in
-
-			console.log(state.todos);
-
 			return {
 				...state,
 				todos: toggleToDoList

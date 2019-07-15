@@ -13,7 +13,8 @@ class TodoList extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			todos: props.todos
+			todos: props.todos,
+			value: ''
 		};
 	}
 
@@ -22,6 +23,8 @@ class TodoList extends React.Component {
 	};
 
 	render() {
+		console.log(this.props.todos);
+
 		return (
 			<div>
 				<ul>
