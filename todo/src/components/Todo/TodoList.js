@@ -18,7 +18,6 @@ class TodoList extends React.Component {
 	}
 
 	toggleTodo = (toDo) => {
-		console.log('Toggle To Do.' + toDo.id);
 		this.props.toggleTodo(toDo.id);
 	};
 

@@ -21,21 +21,18 @@ export default (state = initialState, action) => {
 		case TOGGLETODO:
 			// Toggle the completed status
 			console.log('Reducer: Toggle To Do.' + action.payload.id);
-			console.log(state.todos);
+			const toggleToDoList = state.todos.map(
+				(todo) => (todo.id === action.payload.id ? { ...todo, completed: !todo.completed } : todo)
+			);
 
 			// map over current state and mark task completed if = id passed in
-			// const ToggleToDoList = state.todos.map((todo) => {
-			// 	// if (todo.id === action.payload.id) {
-			// 	// 	const newTodo = {
-			// 	// 		...todo,
-			// 	// 		completed: !todo.completed
-			// 	// 	};
-			// 	// 	return newTodo;
-			// 	// } else {
-			// 	// 	return todo;
-			// 	// }
-			// });
-			return state;
+
+			console.log(state.todos);
+
+			return {
+				...state,
+				todos: toggleToDoList
+			};
 		default:
 			return state;
 	}
