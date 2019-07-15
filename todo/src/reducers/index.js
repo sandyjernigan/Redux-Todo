@@ -3,13 +3,15 @@ import { ACTION } from '../actions';
 const initialState = {
   todos: [
     {
-    value: 'Walk the dog.',
-    completed: false
-  }, {
-    value: 'Take out the trash.',
-    completed: false
-  }, 
-]
+      id: 1,
+      value: 'Walk the dog.',
+      completed: false
+    }, {
+      id: 2,
+      value: 'Take out the trash.',
+      completed: false
+    }, 
+  ]
 }
 
 // Our reducer that handles the action(s)
