@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { toggleTodo } from '../../actions/';
-import Todo from './Todo';
+// import Todo from './Todo';
 
 // <TodoList /> receives Todos array and
 // iterates over the list generating a new <Todo />
@@ -18,18 +18,31 @@ class TodoList extends React.Component {
 		};
 	}
 
-	toggleTodo = (toDo) => {
-		this.props.toggleTodo(toDo.id);
+	toggleTodo = (event) => {
+		const toggleID = event.target.getAttribute('name');
+		this.props.toggleTodo(toggleID);
+		this.setState({ value: '' });
 	};
 
 	render() {
+		console.log('state:');
 		console.log(this.props.todos);
+		const todoslist = this.props.todos;
 
 		return (
 			<div>
 				<ul>
-					{this.state.todos.map((toDo) => {
-						return <Todo toDo={toDo} key={toDo.id} toggleTodo={this.props.toggleTodo} />;
+					{todoslist.map((toDo) => {
+						return (
+							<li
+								name={toDo.id}
+								key={toDo.id}
+								className={`task ${toDo.completed ? ' completed' : ''}`}
+								onClick={this.toggleTodo}
+							>
+								{toDo.value}
+							</li>
+						);
 					})}
 				</ul>
 			</div>

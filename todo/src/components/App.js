@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { TodoList, TodoForm } from './Todo';
 import Background from './backgroundStyle/bg';
-import './Todo/Todo.css';
 
 class App extends Component {
 	render() {
@@ -12,6 +11,7 @@ class App extends Component {
 					<h2>Honey Do List!</h2>
 					<div className="todolist">
 						<TodoList />
+						<TodoForm />
 					</div>
 				</div>
 			</div>

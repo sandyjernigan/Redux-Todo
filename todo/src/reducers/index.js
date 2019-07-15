@@ -23,9 +23,14 @@ export default (state = initialState, action) => {
 			console.log('Reducer: Toggle To Do.' + action.payload.id);
 
 			// map over current state and mark task completed if = id passed in
-			const toggleToDoList = state.todos.map(
-				(todo) => (todo.id === action.payload.id ? { ...todo, completed: !todo.completed } : todo)
+			const toggleToDoList = state.todos.map(todo =>
+				(todo.id == action.payload.id)
+					? { ...todo, completed: !todo.completed }
+					: todo
 			);
+			console.log('toggleToDoList:');
+			console.log(toggleToDoList);
+
 			return {
 				...state,
 				todos: toggleToDoList
