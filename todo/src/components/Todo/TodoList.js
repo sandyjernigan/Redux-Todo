@@ -1,6 +1,5 @@
 import React from "react";
 import { connect } from 'react-redux'
-// import Todo from "./Todo";
 
 // <TodoList /> receives Todos array and
 // iterates over the list generating a new <Todo />
@@ -11,14 +10,21 @@ import { connect } from 'react-redux'
 function TodoList(props) {
   // get variables from state
   const toDoList = props.toDoList;
-  console.log(props.toDoList);
+
+  const clickHandler = () => {
+    // props.toggleTodo(props.toDo.id);
+  };
 
   return (
     <div>
       <ul>
-        {props.toDoList.map(toDo => {
+        {toDoList.map(toDo => {
           return (
-            <li>{toDo.task}</li>
+            <li 
+              className={`task ${toDo.completed ? " completed" : ""}`} 
+              onClick={clickHandler} key={toDo.id} >
+              {toDo.task}
+            </li>
           );
         })}
       </ul>
@@ -32,6 +38,10 @@ const mapStateToProps = (state) => {
   };
 };
 
-export default connect(mapStateToProps)(TodoList);
+// The mapDispatchToProps is used to dispatch the actions
+const mapDispatchToProps = { 
+    // action: action
+}
 
-// <Todo toDo={toDo} key={toDo.id} toggleTodo={props.toggleTodo} />
+// The connect function makes this component aware of the rest of the redux architecture. 
+export default connect(mapStateToProps, mapDispatchToProps)(TodoList);

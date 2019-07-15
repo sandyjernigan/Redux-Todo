@@ -4,6 +4,12 @@ import React from 'react';
 // <TodoForm> will hold your input field and your Add Todo and Clear Completed buttons. 
 
 class TodoForm extends React.Component {
+	constructor() {
+		super()
+		this.state = {
+			task: ''
+		}
+	}
     
     changeHandler = event => {
         //this.setState({ task: event.target.value });

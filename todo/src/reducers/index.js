@@ -1,4 +1,4 @@
-import { ACTION } from '../actions';
+import { ACTION, TOGGLETODO } from '../actions';
 
 const initialState = {
   // Setting up the initial To Do List (used data from previous to do list)
@@ -21,6 +21,12 @@ const initialState = {
 // Our reducer that handles the action(s)
 export default (state = initialState, action) => {
   switch (action.type) {
+    case TOGGLETODO:
+      // Toggle the completed status
+      return { 
+        ...state,
+        stateItem: 1
+      }
     case ACTION:
       // This will be the action taken
       return { 

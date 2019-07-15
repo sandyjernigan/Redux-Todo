@@ -1,7 +1,7 @@
 import React, { Component } from "react"
 import { connect } from 'react-redux'
 import { action } from '../actions'
-import { Todo, TodoList, TodoForm } from './Todo'
+import { TodoList, TodoForm } from './Todo'
 import Background from './backgroundStyle/bg';
 import './Todo/Todo.css';
 
@@ -23,18 +23,18 @@ class App extends Component {
 
     toggleTodo = id => {
       console.log('Toggle To Do.');
-      // const newToDoList = this.state.todoOnState.map(task => {
-      //   if (task.id === id) {
-      //     const newTask = {
-      //       ...task,
-      //       completed: !task.completed
-      //     };
-      //     return newTask;
-      //   } else {
-      //     return task;
-      //   }});
+      const newToDoList = this.state.todoOnState.map(task => {
+        if (task.id === id) {
+          const newTask = {
+            ...task,
+            completed: !task.completed
+          };
+          return newTask;
+        } else {
+          return task;
+        }});
 
-      //   this.setState({ todoOnState: newToDoList });
+        this.setState({ todoOnState: newToDoList });
     }
 
     clearTodo = () => {
@@ -56,7 +56,7 @@ class App extends Component {
           <div className="main">
             <h2>Honey Do List!</h2>
             <div className="todolist">
-            <TodoList />
+            <TodoList toggleTodo={this.toggleTodo} />
             <TodoForm />
             
             <br />
