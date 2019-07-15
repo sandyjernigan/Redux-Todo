@@ -1,4 +1,4 @@
-import { ACTION } from '../actions';
+import { TOGGLETODO } from '../actions';
 
 const initialState = {
   todos: [
@@ -17,8 +17,8 @@ const initialState = {
 // Our reducer that handles the action(s)
 export default (state = initialState, action) => {
   switch (action.type) {
-    case ACTION:
-      // This will be the action taken
+    case TOGGLETODO:
+      // Toggle the completed status
       return { 
         ...state,
         stateItem: 1

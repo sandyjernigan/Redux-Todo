@@ -1,6 +1,4 @@
 import React, { Component } from "react"
-import { connect } from 'react-redux'
-import { action } from '../actions'
 import { TodoList, TodoForm } from './Todo'
 import Background from './backgroundStyle/bg';
 import './Todo/Todo.css';
@@ -14,7 +12,7 @@ class App extends Component {
             <h2>Honey Do List!</h2>
             <div className="todolist">
             <TodoList />
-            {/* <TodoForm /> */}
+            <TodoForm />
             </div>
           </div>
         </div>
