@@ -42,8 +42,8 @@ class TodoForm extends React.Component {
         </form>
         <br />
 
-        <button onClick={this.clearTodo}>Clear Completed</button>
-        <button onClick={this.resetTodo}>Reset</button>
+        {/* <button onClick={this.clearTodo}>Clear Completed</button>
+        <button onClick={this.resetTodo}>Reset</button> */}
       </div>
     );
   }
