@@ -1,4 +1,6 @@
 import React from "react";
+import { connect } from 'react-redux';
+import { addTodo } from '../../actions/';
 
 // Component for the ToDoList Form
 // <TodoForm> will hold your input field and your Add Todo and Clear Completed buttons.
@@ -7,19 +9,20 @@ class TodoForm extends React.Component {
   constructor() {
     super();
     this.state = {
-      task: ""
+      value: ''
     };
   }
 
   changeHandler = event => {
-    //this.setState({ task: event.target.value });
+    this.setState({ value: event.target.value });
   };
 
   submitHandler = event => {
     event.preventDefault();
     console.log("Submit Handler.");
-    // this.props.addTodo(this.state.task);
-    // this.setState({ task: '' });
+    console.log(this.state.value);
+    this.props.addTodo(this.state.value);
+    this.setState({ value: '' });
   };
 
   // If task is empty, preventDefault and do nothing
@@ -30,18 +33,17 @@ class TodoForm extends React.Component {
   render() {
     return (
       <div>
-        <form onSubmit={this.submitHandler}>
+        <form onSubmit={this.state.task !== '' ? this.submitHandler : this.noChange}>
           <input
             type="text"
             placeholder="...todo"
             name="task"
-            value="value"
             onChange={this.changeHandler}
           />
           <button type="submit">Add Todo</button>
         </form>
         <br />
-        
+
         <button onClick={this.clearTodo}>Clear Completed</button>
         <button onClick={this.resetTodo}>Reset</button>
       </div>
@@ -49,13 +51,17 @@ class TodoForm extends React.Component {
   }
 }
 
-export default TodoForm;
+// State
+const mapStateToProps = (state) => {
+  return {
+    todos: state.todos
+  };
+};
 
-// <form onSubmit={this.state.task !== '' ? this.submitHandler : this.noChange}>
-// <input type="text" placeholder="...todo"
-//     name="task"
-//     value={this.state.task}
-//     onChange={this.changeHandler}
-// />
-// <button type="submit">Add Todo</button>
-// </form>
+// dispatch actions
+const mapDispatchToProps = {
+  addTodo: addTodo
+};
+
+// Connect
+export default connect(mapStateToProps, mapDispatchToProps)(TodoForm);

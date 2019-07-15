@@ -1,4 +1,4 @@
-import { TOGGLETODO } from '../actions';
+import { TOGGLETODO, ADDTODO } from '../actions';
 
 const initialState = {
 	todos: [
@@ -18,6 +18,19 @@ const initialState = {
 // Our reducer that handles the action(s)
 export default (state = initialState, action) => {
 	switch (action.type) {
+		case ADDTODO:
+			// Add a new Todo
+			console.log(action.payload.value);
+			const newToDO = {
+				id: Date.now(),
+				value: action.payload.value,
+				completed: false
+			}
+			console.log(newToDO);
+			return {
+				...state,
+				todos: [...state.todos, newToDO]
+			};
 		case TOGGLETODO:
 			// Toggle the completed status
 

@@ -1,7 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { toggleTodo } from '../../actions/';
-// import Todo from './Todo';
 
 // <TodoList /> receives Todos array and
 // iterates over the list generating a new <Todo />
