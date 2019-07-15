@@ -20,13 +20,11 @@ export default (state = initialState, action) => {
 	switch (action.type) {
 		case ADDTODO:
 			// Add a new Todo
-			console.log(action.payload.value);
 			const newToDO = {
 				id: Date.now(),
 				value: action.payload.value,
 				completed: false
 			}
-			console.log(newToDO);
 			return {
 				...state,
 				todos: [...state.todos, newToDO]
