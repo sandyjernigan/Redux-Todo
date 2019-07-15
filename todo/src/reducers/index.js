@@ -34,7 +34,7 @@ export default (state = initialState, action) => {
 
 			// map over current state and mark task completed if = id passed in
 			const toggleToDoList = state.todos.map(todo =>
-				(todo.id == action.payload.id)
+				(todo.id === parseInt(action.payload.id))
 					? { ...todo, completed: !todo.completed }
 					: todo
 			);
